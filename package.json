@@ -1,0 +1,24 @@
+{
+  "name": "wiznote-sdk-js-share",
+  "version": "1.0.0",
+  "description": "wiznote javascript sdk share components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WizTeam/wiznote-sdk-js-share.git"
+  },
+  "keywords": [
+    "wiznote"
+  ],
+  "author": "WizTeam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WizTeam/wiznote-sdk-js-share/issues"
+  },
+  "homepage": "https://github.com/WizTeam/wiznote-sdk-js-share#readme",
+  "dependencies": {
+    "assert": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {}
+}
