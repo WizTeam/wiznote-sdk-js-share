@@ -1,6 +1,6 @@
 import assert  from 'assert';
 
-class WizKnownError extends Error {
+export class WizKnownError extends Error {
   constructor(message, code, externCode) {
     super(message);
     assert(message);
@@ -40,46 +40,46 @@ class WizKnownError extends Error {
   }
 }
 
-class WizInvalidTokenError extends WizKnownError {
+export class WizInvalidTokenError extends WizKnownError {
   constructor(message = 'Invalid token') {
     super(message, 'WizErrorInvalidToken');
   }
 }
 
 
-class WizInvalidUserError extends WizKnownError {
+export class WizInvalidUserError extends WizKnownError {
   constructor(message = 'Invalid user') {
     super(message, 'WizErrorInvalidUser');
   }
 }
 
 
-class WizInvalidPasswordError extends WizKnownError {
+export class WizInvalidPasswordError extends WizKnownError {
   constructor(message = 'invalid password') {
     super(message, 'WizErrorInvalidPassword');
   }
 }
 
-class WizInvalidParamError extends WizKnownError {
+export class WizInvalidParamError extends WizKnownError {
   constructor(message) {
     super(message, 'WizErrorInvalidParam');
   }
 }
 
 
-class WizNetworkError extends WizKnownError {
+export class WizNetworkError extends WizKnownError {
   constructor(message) {
     super(message, 'WizErrorNetwork');
   }
 }
 
-class WizInternalError extends WizKnownError {
+export class WizInternalError extends WizKnownError {
   constructor(message, externCode) {
     super(message, 'WizErrorInternal', externCode);
   }
 }
 
-class WizTimeoutError extends WizKnownError {
+export class WizTimeoutError extends WizKnownError {
   //
   constructor(message) {
     super(message, 'WizErrorTimeout');
@@ -91,27 +91,14 @@ class WizTimeoutError extends WizKnownError {
   }
 }
 
-class WizNotExistsError extends WizKnownError {
+export class WizNotExistsError extends WizKnownError {
   constructor(message) {
     super(message, 'WizNotExistsError');
   }
 }
 
-class WizServerError extends WizKnownError {
+export class WizServerError extends WizKnownError {
   constructor(message, externCode) {
     super(message, 'WizErrorServer', externCode);
   }
 }
-
-export default {
-  WizKnownError,
-  WizInvalidTokenError,
-  WizInvalidUserError,
-  WizInvalidPasswordError,
-  WizInvalidParamError,
-  WizNetworkError,
-  WizTimeoutError,
-  WizInternalError,
-  WizNotExistsError,
-  WizServerError,
-};

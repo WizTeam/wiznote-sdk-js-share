@@ -1,9 +1,4 @@
-import error from './error';
-import version from './version';
-import noteAnalysis from './note_analysis';
+export * as error from './error';
+export * as version from './version';
+export * as noteAnalysis from './note_analysis';
 
-export default {
-  error: error,
-  version: version,
-  noteAnalysis: noteAnalysis
-};

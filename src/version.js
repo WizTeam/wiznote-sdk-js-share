@@ -1,4 +1,4 @@
-function compareVersion(version1, version2) {
+export function compareVersion(version1, version2) {
   const v1 = version1.split('.');
   const v2 = version2.split('.');
 
@@ -18,7 +18,3 @@ function compareVersion(version1, version2) {
   }
   return 0;
 }
-
-export default {
-  compareVersion,
-};

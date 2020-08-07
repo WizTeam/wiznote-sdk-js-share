@@ -1,6 +1,6 @@
 // 规则: 在一行內，#在一个单词开头，表示标签开始。如果在行尾，找不到单词结尾+#，则表示标签以空格结束。
 // Tag 不能太长，限定在 25 个字符以内
-const REGEXP_TAG = /(^|[\t\f\v ])#(?!#|\s)(([^#\r\n]{0,25}[^#\s]#)|([^#\s]{0,25}$)|(\S{0,25}(\S|$)))/gm;
+export const REGEXP_TAG = /(^|[\t\f\v ])#(?!#|\s)(([^#\r\n]{0,25}[^#\s]#)|([^#\s]{0,25}$)|(\S{0,25}(\S|$)))/gm;
 
 // 规则: [[xxxx]] 提取出xxxx
 const REGEXP_LINK = /(?!\[)\[\[[^[\]]*]](?!\])/g;
@@ -18,7 +18,7 @@ function clearLinkFromMarkdown(markdown) {
   return markdown.replace(linkReg, '\n');
 }
 
-function extractTagsFromMarkdown(markdown) {
+export function extractTagsFromMarkdown(markdown) {
   // 规则: 在一行內，#在一个单词开头，表示标签开始。如果在行尾，找不到单词结尾+#，则表示标签以空格结束。
   // 如果找到单词+#结尾，则标签以单词结尾+#结束
   // #test1 #test2 xxxx, xxx, xxx => ['test1', 'test2']
@@ -42,7 +42,7 @@ function extractTagsFromMarkdown(markdown) {
   return result.sort();
 }
 
-function extractLinksFromMarkdown(markdown) {
+export function extractLinksFromMarkdown(markdown) {
   // 规则: [[xxxx]] 提取出xxxx
   const matches = clearCodeFromMarkdown(markdown).match(REGEXP_LINK);
   if (!matches) {
@@ -59,7 +59,7 @@ function extractLinksFromMarkdown(markdown) {
   return result.sort();
 }
 
-function getMarkdownFromHtml(html) {
+export function getMarkdownFromHtml(html) {
   const from = html.indexOf('<pre>');
   const to = html.lastIndexOf('</pre>');
   if (from === -1 || to === -1 || from > to) {
@@ -95,17 +95,9 @@ function parseIncludeResourcesForMarkdown(markdown) {
   return result;
 }
 
-function getResourcesFromHtml(html) {
+export function getResourcesFromHtml(html) {
   let markdown = getMarkdownFromHtml(html);
   markdown = clearCodeFromMarkdown(markdown);
   markdown = clearCodeInLineFromMarkdown(markdown);
   return parseIncludeResourcesForMarkdown(markdown);
 }
-
-export default {
-  REGEXP_TAG,
-  extractTagsFromMarkdown,
-  extractLinksFromMarkdown,
-  getMarkdownFromHtml,
-  getResourcesFromHtml,
-};
