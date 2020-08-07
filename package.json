@@ -16,6 +16,10 @@
     "url": "https://github.com/WizTeam/wiznote-sdk-js-share/issues"
   },
   "homepage": "https://github.com/WizTeam/wiznote-sdk-js-share#readme",
+  "files": [
+    "lib/*",
+    "src/*"
+  ],
   "dependencies": {
     "assert": "^2.0.0"
   },
