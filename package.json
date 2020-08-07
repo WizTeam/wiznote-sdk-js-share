@@ -29,6 +29,7 @@
     "@babel/preset-env": "^7.11.0"
   },
   "scripts": {
-    "build:commonjs": "babel src --out-dir lib"
+    "build:commonjs": "babel src --out-dir lib",
+    "prepublishOnly": "npm run build:commonjs"
   }
 }
