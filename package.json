@@ -2,7 +2,7 @@
   "name": "wiznote-sdk-js-share",
   "version": "1.0.0",
   "description": "wiznote javascript sdk share components",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WizTeam/wiznote-sdk-js-share.git"
@@ -19,6 +19,13 @@
   "dependencies": {
     "assert": "^2.0.0"
   },
-  "devDependencies": {},
-  "scripts": {}
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "babel-cli": "^6.26.0"
+  },
+  "scripts": {
+    "build:commonjs": "babel src --out-dir lib"
+  }
 }

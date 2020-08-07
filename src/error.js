@@ -1,4 +1,4 @@
-const assert = require('assert');
+import assert  from 'assert';
 
 class WizKnownError extends Error {
   constructor(message, code, externCode) {
@@ -103,7 +103,7 @@ class WizServerError extends WizKnownError {
   }
 }
 
-module.exports = {
+export default {
   WizKnownError,
   WizInvalidTokenError,
   WizInvalidUserError,

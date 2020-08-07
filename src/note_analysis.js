@@ -102,7 +102,7 @@ function getResourcesFromHtml(html) {
   return parseIncludeResourcesForMarkdown(markdown);
 }
 
-module.exports = {
+export default {
   REGEXP_TAG,
   extractTagsFromMarkdown,
   extractLinksFromMarkdown,

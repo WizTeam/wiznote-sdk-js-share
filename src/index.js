@@ -1,9 +1,9 @@
-const error = require('./error');
-const version = require('./version');
-const noteAnalysis = require('./note_analysis');
+import error from './error';
+import version from './version';
+import noteAnalysis from './note_analysis';
 
-module.exports = {
-  error,
-  version,
-  noteAnalysis,
+export default {
+  error: error,
+  version: version,
+  noteAnalysis: noteAnalysis
 };

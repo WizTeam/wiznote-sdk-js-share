@@ -19,6 +19,6 @@ function compareVersion(version1, version2) {
   return 0;
 }
 
-module.exports = {
+export default {
   compareVersion,
 };
