@@ -84,7 +84,7 @@ function parseIncludeResourcesForMarkdown(markdown) {
     if (!file) {
       break;
     }
-    const fileName = file[1];
+    const fileName = file[1].replace(/\s=[^.]*$/, '');
     if (!map[fileName]) {
       map[fileName] = true;
       result.push({

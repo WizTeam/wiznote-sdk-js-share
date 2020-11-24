@@ -1,6 +1,6 @@
 {
   "name": "wiznote-sdk-js-share",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "wiznote javascript sdk share components",
   "main": "lib/index.js",
   "repository": {
