@@ -3,7 +3,7 @@
 export const REGEXP_TAG = /(^|[\t\f\v ])#(?!#|\s)(([^#\r\n]{0,25}[^#\s]#)|([^#\s]{0,25}$)|(\S{0,25}(\S|$)))/gm;
 
 // 规则: [[xxxx]] 提取出xxxx
-const REGEXP_LINK = /(?!\[)\[\[[^[\]]*]](?!\])/g;
+const REGEXP_LINK =  /\[{2}[^\[\]]*\]{2}/g;
 
 function clearCodeFromMarkdown(markdown) {
   const codeReg = /```[^`]*```/g;
