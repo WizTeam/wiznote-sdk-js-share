@@ -31,6 +31,6 @@
   },
   "scripts": {
     "build:commonjs": "babel src --out-dir lib",
-    "prepublishOnly": "npm run build:commonjs"
+    "prepublishOnly": "npm --g i typescript && tsc"
   }
 }
