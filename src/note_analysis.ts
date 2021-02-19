@@ -5,20 +5,20 @@ export const REGEXP_TAG = /(^|[\t\f\v ])#(?!#|\s)(([^#\r\n]{0,25}[^#\s]#)|([^#\s
 // 规则: [[xxxx]] 提取出xxxx
 const REGEXP_LINK =  /\[{2}[^\[\]]*\]{2}/g;
 
-function clearCodeFromMarkdown(markdown) {
+function clearCodeFromMarkdown(markdown: string) {
   const codeReg = /```[^`]*```/g;
   return markdown.replace(codeReg, '');
 }
-function clearCodeInLineFromMarkdown(markdown) {
+function clearCodeInLineFromMarkdown(markdown: string) {
   const codeReg = /`.*?`/g;
   return markdown.replace(codeReg, '\n');
 }
-function clearLinkFromMarkdown(markdown) {
+function clearLinkFromMarkdown(markdown: string) {
   const linkReg = /\[[^[\]]*]\([^()\r\n]*\)/g;
   return markdown.replace(linkReg, '\n');
 }
 
-export function extractTagsFromMarkdown(markdown) {
+export function extractTagsFromMarkdown(markdown: string) {
   // 规则: 在一行內，#在一个单词开头，表示标签开始。如果在行尾，找不到单词结尾+#，则表示标签以空格结束。
   // 如果找到单词+#结尾，则标签以单词结尾+#结束
   // #test1 #test2 xxxx, xxx, xxx => ['test1', 'test2']
@@ -31,7 +31,7 @@ export function extractTagsFromMarkdown(markdown) {
   if (!matches) {
     return [];
   }
-  const matchSet = new Set();
+  const matchSet = new Set<string>();
   matches.forEach((s) => {
     const tag = s.replace(/#/g, '').trim().toLowerCase();
     if (tag) {
@@ -42,13 +42,13 @@ export function extractTagsFromMarkdown(markdown) {
   return result.sort();
 }
 
-export function extractLinksFromMarkdown(markdown) {
+export function extractLinksFromMarkdown(markdown: string) {
   // 规则: [[xxxx]] 提取出xxxx
   const matches = clearCodeFromMarkdown(markdown).match(REGEXP_LINK);
   if (!matches) {
     return [];
   }
-  const matchSet = new Set();
+  const matchSet = new Set<string>();
   matches.forEach((s) => {
     const link = s.replace(/\[|\]/g, '').trim();
     if (link) {
@@ -59,7 +59,7 @@ export function extractLinksFromMarkdown(markdown) {
   return result.sort();
 }
 
-export function getMarkdownFromHtml(html) {
+export function getMarkdownFromHtml(html: string) {
   const from = html.indexOf('<pre>');
   const to = html.lastIndexOf('</pre>');
   if (from === -1 || to === -1 || from > to) {
@@ -71,9 +71,11 @@ export function getMarkdownFromHtml(html) {
   return result;
 }
 
-function parseIncludeResourcesForMarkdown(markdown) {
-  const map = {};
-  const result = [];
+function parseIncludeResourcesForMarkdown(markdown: string) {
+  const map: {[index: string]: boolean} = {};
+  const result: {
+    name: string
+  }[] = [];
 
   if (!markdown) {
     return result;
@@ -95,7 +97,7 @@ function parseIncludeResourcesForMarkdown(markdown) {
   return result;
 }
 
-export function getResourcesFromHtml(html) {
+export function getResourcesFromHtml(html: string) {
   let markdown = getMarkdownFromHtml(html);
   markdown = clearCodeFromMarkdown(markdown);
   markdown = clearCodeInLineFromMarkdown(markdown);

@@ -1,7 +1,10 @@
-import assert  from 'assert';
+import assert from 'assert';
 
 export class WizKnownError extends Error {
-  constructor(message, code, externCode) {
+  code: string | number;
+  externCode?: string;
+
+  constructor(message: string, code: string | number, externCode?: string) {
     super(message);
     assert(message);
     assert(code);
@@ -61,27 +64,27 @@ export class WizInvalidPasswordError extends WizKnownError {
 }
 
 export class WizInvalidParamError extends WizKnownError {
-  constructor(message) {
+  constructor(message: string) {
     super(message, 'WizErrorInvalidParam');
   }
 }
 
 
 export class WizNetworkError extends WizKnownError {
-  constructor(message) {
+  constructor(message: string) {
     super(message, 'WizErrorNetwork');
   }
 }
 
 export class WizInternalError extends WizKnownError {
-  constructor(message, externCode) {
+  constructor(message: string, externCode?: string) {
     super(message, 'WizErrorInternal', externCode);
   }
 }
 
 export class WizTimeoutError extends WizKnownError {
   //
-  constructor(message) {
+  constructor(message: string) {
     super(message, 'WizErrorTimeout');
   }
 
@@ -92,13 +95,13 @@ export class WizTimeoutError extends WizKnownError {
 }
 
 export class WizNotExistsError extends WizKnownError {
-  constructor(message) {
+  constructor(message: string) {
     super(message, 'WizNotExistsError');
   }
 }
 
 export class WizServerError extends WizKnownError {
-  constructor(message, externCode) {
+  constructor(message: string, externCode?: string) {
     super(message, 'WizErrorServer', externCode);
   }
 }
